@@ -1,26 +1,54 @@
 <div class="row">
     <div class="col-6">
-        <form>
+        <form [formGroup]="alumnos"(ngSubmit)="onSubmit()">
             <div class="mb-3">
                 <label for="matricula" class="form-label">MATRICULA</label>
-                <input type="text" placeholder="Matrícula" class="form-control">
+                <input type="text" id="matricula" name="matricula"
+                placeholder="Matrícula" formControlName="matricula" class="form-control" required>
+
+                <div *ngIf="alumnos.get('matricula')?.errors?.['required']" class="alert alert-danger">
+                MATRICULA REQUERIDA</div>
+
             </div>
+
             <div class="mb-3">
                 <label for="nombre" class="form-label">NOMBRE</label>
-                <input type="text" placeholder="Nombre" class="form-control">
+                <input type="text" id="nombre" name="nombre"
+                formControlName="nombre" placeholder="Nombre" class="form-control">
+
+                <div *ngIf="alumnos.get('nombre')?.errors?.['required']" class="alert alert-danger">
+                EL NOMBRE ES REQUERIDO</div>
             </div>
+
             <div class="mb-3">
                 <label for="apaterno" class="form-label">APELLIDO PATERNO</label>
-                <input type="text" placeholder="Apaterno" class="form-control">
+                <input type="text" id="apaterno" name="apaterno"
+                formControlName="apaterno" placeholder="Apaterno" class="form-control">
+
+                <div *ngIf="alumnos.get('apaterno')?.errors?.['required']" class="alert alert-danger">
+                INGRESE EL APELLIDO POR FAVOR</div>
             </div>
+
             <div class="mb-3">
                 <label for="amaterno" class="form-label">APELLIDO MATERNO</label>
-                <input type="text" placeholder="Amaterno" class="form-control">
+                <input type="text" id="amaterno" name="amaterno"
+                formControlName="amaterno" placeholder="Amaterno" class="form-control">
+
+                <div *ngIf="alumnos.get('amaterno')?.errors?.['required']" class="alert alert-danger">
+                INGRESE EL APELLIDO POR FAVOR</div>
             </div>
+
             <div class="mb-3">
                 <label for="correo" class="form-label">CORREO ELECTRÓNICO</label>
-                <input type="text" placeholder="Correo" class="form-control">
+                <input type="text" id="correo" name="correo"
+                formControlName="correo" placeholder="Correo" class="form-control">
+
+                <div *ngIf="alumnos.get('correo')?.errors?.['required']" class="alert alert-danger">
+                INGRESE UN CORREO ELECTRÓNICO POR FAVOR</div>
             </div>
+
+            <button class="btn btn-primary" type="submit">Agregar</button>
+
         </form>
     </div>
     <div class="col-6"></div>
